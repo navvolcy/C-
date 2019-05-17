@@ -1,0 +1,94 @@
+#include<iostream>
+
+using namespace std;
+
+int main() {
+	char repeat = 'y';
+	while (repeat == 'y') {
+
+		double tax;
+		double income;
+		char status;
+
+		cout << fixed;
+		cout.precision(2);
+		cout << "Please enter in your taxable income." << endl;
+		cout << "(This must be a positive value): " << endl << endl;
+		cin >> income;
+		if (income < 0) {
+			continue;
+		}
+
+		cout << " Please enter m if married and filing joint return, or s if filing a single return: " << endl << endl;
+		while (cin >> status) {
+			if (status == 'm' || status == 's') {
+				break;
+			}
+			cout << " Please enter m if married and filing joint return, or s if filing a single return: " << endl;
+
+		}
+		if (status == 'm') {
+			if (income <= 1726) {
+				tax = (income - 0) * 0.023 + 0;
+			}
+			else if (income >= 1727 && income <= 5176) {
+				tax = (income - 1726) * 0.033 + 40;
+			}
+			else if (income >= 5177 && income <= 8626) {
+				tax = (income - 5176) * 0.052 + 175;
+			}
+			else if (income > 8626) {
+				tax = (income - 8626) * 0.075 + 390;
+			}
+			else {
+				cout << "out of range" << endl;
+			}
+		}
+		else if (status == 's') {
+			if (income <= 863) {
+				tax = (income - 0) * 0.023 + 0;
+			}
+			else if (income >= 864 && income <= 2588) {
+				tax = (income - 863) * 0.033 + 25;
+			}
+			else if (income >= 2589 && income <= 4313) {
+				tax = (income - 2588) * 0.52 + 85;
+			}
+			else if (income > 4313) {
+				tax = (income - 4313) * 0.075 + 181;
+			}
+			else {
+				cout << "out of range" << endl;
+			}
+		}
+		else {
+
+		}
+		cout << "Your taxable income is $" << income << endl;
+
+		if (status == 'm') {
+			cout << "and you are filing a joint return." << endl;
+		}
+		else if (status == 's') {
+			cout << "and you are filing a single return." << endl;
+		}
+
+		cout << "Your income tax will be $" << tax << endl << endl;
+
+		cout << "Would you like to do another calculation ( y or n)?" << endl;
+		while (cin >> repeat) {
+			if (repeat == 'y' || repeat == 'n') {
+				break;
+			}
+			cout << "Would you like to do another calculation ( y or n)?" << endl;
+		}
+
+	}
+
+
+
+
+
+
+
+}
